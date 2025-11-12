@@ -25,3 +25,4 @@ def predict(data: CustomerData):
 @app.get("/")
 def home():
     return {"message": "Customer Churn Prediction API is running 🚀"}
+
