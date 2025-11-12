@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 import joblib
 import pandas as pd
+import os
 
 app = FastAPI(title="Customer Churn API")
 MODEL_PATH = os.path.join(os.path.dirname(__file__), "model.pkl")
