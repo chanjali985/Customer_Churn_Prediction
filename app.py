@@ -4,7 +4,8 @@ import joblib
 import pandas as pd
 
 app = FastAPI(title="Customer Churn API")
-model = joblib.load("model.pkl")
+MODEL_PATH = os.path.join(os.path.dirname(__file__), "model.pkl")
+model = joblib.load(MODEL_PATH)
 
 class CustomerData(BaseModel):
     gender: int
@@ -20,3 +21,7 @@ def predict(data: CustomerData):
     df = pd.DataFrame([data.dict()])
     prediction = model.predict(df)[0]
     return {"churn": bool(prediction)}
+
+@app.get("/")
+def home():
+    return {"message": "Customer Churn Prediction API is running 🚀"}
